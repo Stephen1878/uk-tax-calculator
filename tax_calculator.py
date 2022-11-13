@@ -8,6 +8,7 @@ Created on Tue Feb  1 18:30:37 2022
 annual_salary = float(input('Enter your annual salary: '))
 pension_contribution = float(input('Enter your pension contribution %: '))
 student_loan_plan_number = float(input('Enter your student loan plan no (0 if no student loan): '))
+test = 1
 
 if annual_salary < 50270:
     PAYE = (annual_salary-12570)*0.2
