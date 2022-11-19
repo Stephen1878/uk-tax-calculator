@@ -5,6 +5,8 @@ Created on Tue Feb  1 18:30:37 2022
 @author: Stephen
 """
 
+import pandas as pd
+
 annual_salary = float(input('Enter your annual salary: '))
 pension_contribution = float(input('Enter your pension contribution %: '))
 student_loan_plan_number = float(input('Enter your student loan plan no (0 if no student loan): '))
@@ -31,14 +33,15 @@ elif student_loan_plan_number == 2:
 pension = annual_salary * (pension_contribution/100)
 total_deductions = PAYE+NI+SL+pension
 net_salary = annual_salary - total_deductions
-monthly_net_salary = net_salary/12
 
-print('Annual Salary:',annual_salary)
-print('PAYE:',PAYE)
-print('NI:',NI)
-print('Student Loan Payments:',SL)
-print('Pension Contributions:',pension)
-print('total_deductions:',total_deductions)
-print('Net Annual Salary:',net_salary)
-print('Monthly Net Salary:',monthly_net_salary)
+variable_list = ['Gross Pay','PAYE','NI','Student Loan','Pension','Net Salary']
+annual_list = [annual_salary,PAYE,NI,SL,pension,net_salary]
+monthly_list = [annual_salary/12,PAYE/12,NI/12,SL/12,pension/12,net_salary/12]
+weekly_list = [annual_salary/52,PAYE/52,NI/52,SL/52,pension/52,net_salary/52]
 
+df = pd.DataFrame()
+df['Metric']=variable_list
+df['Annual']=annual_list
+df['Monthly']=monthly_list
+df['Weekly']=weekly_list
+print(df)
